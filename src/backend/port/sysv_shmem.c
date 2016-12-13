@@ -451,6 +451,7 @@ CreateAnonymousSegment(Size *size)
 		int			mmap_flags;
 
 		GetHugePageSize(&hugepagesize, &mmap_flags);
+		elog(LOG, "%u hugepagesize detected: %m", hugepagesize);
 
 		if (allocsize % hugepagesize != 0)
 			allocsize += hugepagesize - (allocsize % hugepagesize);
